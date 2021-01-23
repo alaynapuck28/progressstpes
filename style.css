@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+:root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+body {
+  background-color: #f6f7fb;
+  font-family: "Muli", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 100%;
+  width: 350px;
+}
+/* must add content attribute if using before */
+.progress-container::before {
+  content: "";
+  position: absolute;
+  background-color: var(--line-border-empty);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  z-index: -1;
+}
+
+.progress {
+  position: absolute;
+  background-color: var(--line-border-fill);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 0%;
+  z-index: -1;
+  transition: 0.4s ease;
+}
+
+.circle {
+  border: solid 3px var(--line-border-empty);
+  border-radius: 50%;
+  background-color: #fff;
+  color: #999;
+  /* set height and width to get legit round circle */
+  height: 40px;
+  width: 40px;
+  /* to get numbers i.e. the child of circle centered use flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border will change colors based on progress need transition*/
+  transition: 0.4s ease;
+}
+.circle.active {
+  border: solid 2px #3498db;
+  transition: 0.4s ease;
+}
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+/* when hover no outline? */
+.btn:focus {
+  outline: none;
+}
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: var(--line-border-empty);
+}
